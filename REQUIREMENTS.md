@@ -73,8 +73,8 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 Example: A SHOW route: 'blogs/:id' [GET]
 
-1- Users(id:varchar, firstName:varchar, lastName:varchar, password:varchar)
+1- Users(id:SERIAL PRIMARY KEY, firstName:VARCHAR, lastName:VARCHAR, password:VARCHAR)
 
-2- Products(id:varchar, name:varchar, price:number)
+2- Products(id:SERIAL PRIMARY KEY, name:VARCHAR, price:number)
 
-3- Orders(id:varchar, product_id:varchar[foreign key to Products table], user_id:varchar[foreign key to Users table], quantity:number, status )
+3- Orders(id:SERIAL PRIMARY KEY, product_id:VARCHAR[foreign key to Products table], user_id:VARCHAR[foreign key to Users table], quantity:number, status )
