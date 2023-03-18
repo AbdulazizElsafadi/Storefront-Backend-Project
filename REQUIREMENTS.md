@@ -77,4 +77,6 @@ Example: A SHOW route: 'blogs/:id' [GET]
 
 2- Products(id:SERIAL PRIMARY KEY, name:VARCHAR, price:number)
 
-3- Orders(id:SERIAL PRIMARY KEY, product_id:VARCHAR[foreign key to Products table], user_id:VARCHAR[foreign key to Users table], quantity:number, status )
+3- Orders(id SERIAL PRIMARY KEY, user_id integer[foreign key to Users table], status VARCHAR(100))
+
+4- Order_products(id SERIAL PRIMARY KEY, order_id: integer[foreign key to Orders table], product_id:VARCHAR[foreign key to Products table], quantity integer)

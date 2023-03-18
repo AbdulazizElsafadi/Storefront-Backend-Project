@@ -2,14 +2,14 @@
   "dev": {
     "driver": "pg",
     "host": "localhost",
-    "database": "storeFront",
+    "database": "azeez_141",
     "user": "azeez_141",
     "password": "password123"
   },
   "test": {
     "driver": "pg",
     "host": "localhost",
-    "database": "storeFront_test",
+    "database": "azeez_141_test",
     "user": "azeez_141_test",
     "password": "password123"
   }
