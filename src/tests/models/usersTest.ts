@@ -5,4 +5,10 @@ describe("testing user model", () => {
   it("test the index func to be defined", () => {
     expect(store.index).toBeDefined();
   });
+
+  it("should return a list of users", async () => {
+    const result = await store.index();
+    console.log("result:", result);
+    expect(result).toEqual([]);
+  });
 });

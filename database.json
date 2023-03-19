@@ -2,15 +2,15 @@
   "dev": {
     "driver": "pg",
     "host": "localhost",
-    "database": "azeez_141",
-    "user": "azeez_141",
-    "password": "password123"
+    "database": { "ENV": "POSTGRES_DB" },
+    "user": { "ENV": "POSTGRES_USER" },
+    "password": { "ENV": "POSTGRES_PASSWORD" }
   },
   "test": {
     "driver": "pg",
     "host": "localhost",
-    "database": "azeez_141_test",
-    "user": "azeez_141_test",
-    "password": "password123"
+    "database": { "ENV": "POSTGRES_DB_TEST" },
+    "user": { "ENV": "POSTGRES_USER" },
+    "password": { "ENV": "POSTGRES_PASSWORD" }
   }
 }

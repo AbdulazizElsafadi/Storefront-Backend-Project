@@ -8,7 +8,7 @@
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
     "build": "npx tsc",
     "jasmine": "jasmine",
-    "test": "npm run build && npm run jasmine",
+    "test": "ENV=test && db-migrate --env storeFront_test up && npm run build && npm run jasmine && db-migrate --env storeFront_test reset",
     "tsc": "tsc"
   },
   "author": "Abdulaziz Alsafadi",

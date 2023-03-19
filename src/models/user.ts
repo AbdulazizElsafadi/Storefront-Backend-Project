@@ -11,9 +11,13 @@ export class UserStore {
   async index(): Promise<User[]> {
     try {
       const connect = await client.connect();
+
       const sql = "SELECT id, firstName, lastName FROM users";
+
       const result = await connect.query(sql);
+
       connect.release();
+
       return result.rows;
     } catch (error) {
       throw new Error(`error getting users ${error}`);

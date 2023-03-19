@@ -13,5 +13,6 @@
       }
     }
   ],
-  "stopSpecOnExpectationFailure": false
+  "stopSpecOnExpectationFailure": false,
+  "random": false
 }
