@@ -1,4 +1,6 @@
 import client from "../database";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export interface User {
   id: Number;
@@ -28,7 +30,7 @@ export class UserStore {
     try {
       const sql = "SELECT id, firstName, lastName FROM users WHERE id=($1)";
       // @ts-ignore
-      const connect = await Client.connect();
+      const connect = await client.connect();
 
       // TODO: REMOVE CONSOLE
       console.log(connect.query);
@@ -44,6 +46,28 @@ export class UserStore {
       return result.rows[0];
     } catch (err) {
       throw new Error(`Could not find user ${id}. Error: ${err}`);
+    }
+  }
+
+  async create(u: User): Promise<User> {
+    try {
+      // @ts-ignore
+      const conn = await Client.connect();
+      const sql =
+        "INSERT INTO users (first_name, last_name, username, password";
+
+      const { pepper, saltRounds } = process.env;
+
+      const hash = bcrypt.hashSync(
+        u.password + pepper,
+        parseInt(saltRounds as string)
+      );
+      const result = await conn.query(sql, [u.firstName, hash]);
+      const user = result.rows[0];
+      conn.release();
+      return user;
+    } catch (error) {
+      throw new Error(`error creating a user: ${error}`);
     }
   }
 }
