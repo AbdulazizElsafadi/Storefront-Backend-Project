@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export interface User {
-  id: Number;
+  id?: Number;
   firstName: string;
   lastName: string;
   password: string;
@@ -32,16 +32,9 @@ export class UserStore {
       // @ts-ignore
       const connect = await client.connect();
 
-      // TODO: REMOVE CONSOLE
-      console.log(connect.query);
-
       const result = await connect.query(sql, [id]);
 
       connect.release();
-
-      // TODO: REMOVE CONSOLES
-      console.log("result:", result);
-      console.log("rows:", result.rows);
 
       return result.rows[0];
     } catch (err) {
@@ -52,18 +45,20 @@ export class UserStore {
   async create(u: User): Promise<User> {
     try {
       // @ts-ignore
-      const conn = await Client.connect();
+      const conn = await client.connect();
       const sql =
-        "INSERT INTO users (first_name, last_name, username, password";
+        "INSERT INTO users(firstName, lastName, password) VALUES($1, $2, $3) RETURNING *";
 
-      const { pepper, saltRounds } = process.env;
+      const { BCRYPT_SECRET, saltRounds } = process.env;
 
       const hash = bcrypt.hashSync(
-        u.password + pepper,
+        u.password + BCRYPT_SECRET,
         parseInt(saltRounds as string)
       );
-      const result = await conn.query(sql, [u.firstName, hash]);
+
+      const result = await conn.query(sql, [u.firstName, u.lastName, hash]);
       const user = result.rows[0];
+
       conn.release();
       return user;
     } catch (error) {

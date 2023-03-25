@@ -1,7 +1,7 @@
 import client from "../database";
 
 export interface Product {
-  id: Number;
+  id?: Number;
   name: string;
   price: Number;
 }
@@ -43,6 +43,23 @@ export class ProductStore {
       return result.rows[0];
     } catch (err) {
       throw new Error(`Could not find product ${id}. Error: ${err}`);
+    }
+  }
+
+  async create(product: Product): Promise<Product> {
+    try {
+      // @ts-ignore
+      const conn = await client.connect();
+      const sql =
+        "INSERT INTO products(name, price) VALUES($1, $2) RETURNING *";
+
+      const result = await conn.query(sql, [product.name, product.price]);
+      const newProduct = result.rows[0];
+
+      conn.release();
+      return newProduct;
+    } catch (error) {
+      throw new Error(`error creating a newProduct: ${error}`);
     }
   }
 }
