@@ -29,16 +29,9 @@ export class ProductStore {
       // @ts-ignore
       const connect = await client.connect();
 
-      // TODO: REMOVE CONSOLE
-      console.log(connect.query);
-
       const result = await connect.query(sql, [id]);
 
       connect.release();
-
-      // TODO: REMOVE CONSOLES
-      console.log("result:", result);
-      console.log("rows:", result.rows);
 
       return result.rows[0];
     } catch (err) {

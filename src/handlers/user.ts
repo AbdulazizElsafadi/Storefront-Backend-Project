@@ -6,17 +6,17 @@ require("dotenv").config();
 
 const store = new UserStore();
 
-const index = async (_req: Request, res: Response) => {
+const index = async (_req: Request, res: Response): Promise<void> => {
   const result = await store.index();
-  return res.json(result);
+  res.json(result);
 };
 
-const show = async (req: Request, res: Response) => {
+const show = async (req: Request, res: Response): Promise<void> => {
   const user = await store.show(req.params.id as unknown as Number);
   res.json(user);
 };
 
-const create = async (req: Request, res: Response) => {
+const create = async (req: Request, res: Response): Promise<void> => {
   try {
     const user: User = {
       firstName: req.body.firstName,
