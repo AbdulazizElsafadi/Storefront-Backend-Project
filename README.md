@@ -11,19 +11,19 @@
 
 ## environment variables used:
 
-PORT=3000
+1. PORT=3000
 
-POSTGRES_HOST=127.0.0.1
-POSTGRES_DB=storeFront
-POSTGRES_USER=azeez_141
-POSTGRES_PASSWORD=password123
+2. POSTGRES_HOST=127.0.0.1
+3. POSTGRES_DB=storeFront
+4. POSTGRES_USER=azeez_141
+5. POSTGRES_PASSWORD=password123
 
-POSTGRES_DB_TEST=storeFront_test
-ENV=dev
+6. POSTGRES_DB_TEST=storeFront_test
+7. ENV=dev
 
-BCRYPT_SECRET=storeFront
-saltRounds=10
-TOKEN_SIGNATURE=storeFront
+8. BCRYPT_SECRET=storeFront
+9. saltRounds=10
+10. TOKEN_SIGNATURE=storeFront
 
 ## IMPORTANT NOTES:
 
