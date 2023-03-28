@@ -1,20 +1,6 @@
 import { OrderStore, Order, Order_Products } from "../models/order";
-import { UserStore } from "../models/user";
-import { ProductStore } from "../models/product";
 import supertest from "supertest";
 import app from "../server";
-
-beforeAll(async () => {
-  const userStore = new UserStore();
-  const productStore = new ProductStore();
-
-  const user = await userStore.create({
-    firstName: "user1",
-    lastName: "user1",
-    password: "123",
-  });
-  const product = await productStore.create({ name: "product1", price: 100 });
-});
 
 describe("Testing order handlers", () => {
   const store = new OrderStore();

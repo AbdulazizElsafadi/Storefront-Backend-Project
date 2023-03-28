@@ -2,6 +2,16 @@ import { UserStore, User } from "../models/user";
 import supertest from "supertest";
 import app from "../server";
 
+beforeAll(async () => {
+  const userStore = new UserStore();
+
+  await userStore.create({
+    firstName: "user1",
+    lastName: "user1",
+    password: "123",
+  });
+});
+
 describe("Testing user handlers", () => {
   const store = new UserStore();
   const request = supertest(app);
@@ -38,7 +48,7 @@ describe("Testing user models", () => {
 
   it("test index call in the model", async () => {
     const result = await store.index();
-    expect(result.length).toEqual(2);
+    expect(result.length).toEqual(3);
   });
 
   it("test show call in the model", async () => {
@@ -52,6 +62,6 @@ describe("Testing user models", () => {
       lastName: "alsafadi",
       password: "12",
     });
-    expect(result.id).toEqual(3);
+    expect(result.id).toEqual(4);
   });
 });

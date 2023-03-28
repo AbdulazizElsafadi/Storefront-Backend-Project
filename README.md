@@ -4,10 +4,17 @@
 
    [Node](https://nodejs.org/en/)
 
-2. npm install (to install all needed packages)
-3. SERVER PORTS: 3000, DATABASE PORT: 5432
+2. `npm install` (to install all needed packages)
+
+3. You need to install docker locally in your device to execute the DataBase:
+   [Download Docker](https://www.docker.com/products/docker-desktop/)
+   Make sure it's installed by running: `docker --version`
+
+4. After downloading docker, pull postgres image from docker hub and then, execute the container with variables provided in the environment variables section.
+
+5. SERVER PORTS: 3000, DATABASE PORT: 5432
    Postgres and pgadmin are used by containers.
-   So, you need to poll the postgres (with port=5432) and pgadmin containers (with port:82 in localhost)
+   So, you need to pull the postgres (with port=5432) and pgadmin containers (with port:82 in localhost)
 
 ## environment variables used:
 
