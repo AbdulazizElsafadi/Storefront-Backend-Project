@@ -27,7 +27,7 @@
 
 ## IMPORTANT NOTES:
 
-1.  If any test case fails then, tables will not be deleted.
-2.  To run the test case the ENV var must be test.
+1.  If any test case fails then, tables will not be deleted which will affect the result of the second run of the test cases.
+2.  To run the test cases, the ENV var must be set to 'test'.
 
 ### \*Enjoy The Project.
