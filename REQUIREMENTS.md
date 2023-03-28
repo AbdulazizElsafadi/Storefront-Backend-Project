@@ -65,18 +65,19 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ### 3- Orders
 
-- usersOrders route /orders/:user_id/:order_id
+- an INDEX route: 'orders' [GET]
+- a CREATE route: 'orders' [POST]
+- ADD PRODUCT route: '/orders/:order_id/products' [post]
+- CURRENT USER ORDERS route: '/orders/users/:user_id/current' [GET]
 
 ## Database Design
 
-- The database contains three tables:
-
-Example: A SHOW route: 'blogs/:id' [GET]
+- The database contains 4 tables:
 
 1- Users(id:SERIAL PRIMARY KEY, firstName:VARCHAR, lastName:VARCHAR, password:VARCHAR)
 
-2- Products(id:SERIAL PRIMARY KEY, name:VARCHAR, price:number)
+2- Products(id:SERIAL PRIMARY KEY, name:VARCHAR, price:INGEGER)
 
-3- Orders(id SERIAL PRIMARY KEY, user_id integer[foreign key to Users table], status VARCHAR(100))
+3- Orders(id SERIAL PRIMARY KEY, user_id INTEGER[foreign key to Users table], status VARCHAR(100))
 
-4- Order_products(id SERIAL PRIMARY KEY, order_id: integer[foreign key to Orders table], product_id:VARCHAR[foreign key to Products table], quantity integer)
+4- Order_products(id SERIAL PRIMARY KEY, order_id: INTEGER[foreign key to Orders table], product_id:VARCHAR[foreign key to Products table], quantity INETEGER)

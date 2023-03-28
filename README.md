@@ -64,7 +64,7 @@ POSTGRES_USER=azeez_141
 POSTGRES_PASSWORD=password123
 
 POSTGRES_DB_TEST=storeFront_test
-ENV=dev
+ENV=dev (should be manualy changed to test)
 
 BCRYPT_SECRET=storeFront
 saltRounds=10
