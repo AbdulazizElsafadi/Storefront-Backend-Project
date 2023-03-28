@@ -27,6 +27,7 @@
 
 6. POSTGRES_DB_TEST=storeFront_test
 7. ENV=dev
+   Note: to run the test cases, the ENV must be set to test manually. (ENV=test)
 
 8. BCRYPT_SECRET=storeFront
 9. saltRounds=10
